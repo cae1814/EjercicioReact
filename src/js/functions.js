@@ -16,7 +16,6 @@ export function alerta(msg, icon, id = '') {
     });
 
     function onfocus(id) {
-        
         if (id !== '') {
             document.getElementById(id).focus();
         }
