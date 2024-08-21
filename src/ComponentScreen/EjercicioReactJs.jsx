@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HookToEjercicioReactJs } from "../Hooks/HookToEjercicioReactJs";
 
 export const EjercicioReactJs = () => {
-  const {x1, x2, changeHandler, submitHandler } = HookToEjercicioReactJs();
+  const {x1, x2, com, isOk, changeHandler, submitHandler } = HookToEjercicioReactJs();
 
   return (
     <>
@@ -49,11 +49,15 @@ export const EjercicioReactJs = () => {
               <div className="row g-3 align-items-center">
                 <div className="mb-3 col-auto">
                   <label htmlFor="labelInputx1" className="form-label">Value of x1</label>
-                  <input disabled type="number" className="form-control text-align-right" id="inputx1" defaultValue={{x1}} tabIndex={5}/>
+                    <input disabled type="text" className="form-control text-align-right" id="inputx1" value={x1} tabIndex={5}/>
                 </div>
                 <div className="mb-3 col-auto">
                   <label htmlFor="labelInputx2" className="form-label">Value of x2</label>
-                  <input disabled type="number" className="form-control text-align-right" id="inputx2" defaultValue={{x2}} tabIndex={6}/>
+                  <input disabled type="text" className="form-control text-align-right" id="inputx2" value={x2} tabIndex={6}/>
+                </div>
+                <div className="mb-3 col-auto">
+                  <label htmlFor="labelInputx2" className="form-label">Commentary</label>
+                  <input disabled type="text" className="form-control text-align-right" id="com" value={com} tabIndex={6}/>
                 </div>
               </div>
             </form>
