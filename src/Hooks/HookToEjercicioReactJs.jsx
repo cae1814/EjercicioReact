@@ -1,45 +1,58 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
 export const HookToEjercicioReactJs = () => {
 
     const [dataForm, setDataForm] = useState(
         {
-            nombres: "",
-            apellidos: "",
-            dni: "",
-            fecha_nacimiento: "",
-            genero: ""
+            inputa: "",
+            inputb: "",
+            inputc: ""
         }
     );
 
-    const [resultado, setResultado] = useState("");
+    const [x1, setX1] = useState("");
+    const [x2, setX2] = useState("");
+    const [com, setCom] = useState("");
 
     const changeHandler = (event) => {
+        event.preventDefault();
         const { name, value } = event.target;
         setDataForm({ ...dataForm, [name]: value });
     }
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        const url = "http://localhost:3000/employees";
-        const result = await axios.post(url, dataForm);
-        console.log(dataForm);
-        const dataResult = (await result).data;
+        const a = parseFloat(dataForm.inputa);
+        const b = parseFloat(dataForm.inputb);
+        const c = parseFloat(dataForm.inputc);
 
-        if (dataResult.obj_creado[0].id > 0) {
-            document.getElementById("alertok").style.display='inline';
-            document.getElementById("alertnok").style.display='none';
-            document.getElementById("refresh").click();
-        } else {
-            document.getElementById("alertnok").style.display='inline';
-            document.getElementById("alertok").style.display='none';
+        if (a === 0){
+            //No puede ser 0
+            return;
         }
+
+        const d = b ** 2 - 4 * a * c;
+
+        if (d > 0) {
+            const x1 = (-b + Math.sqrt(d)) / (2 * a);
+            const x2 = (-b - Math.sqrt(d)) / (2 * a);
+            setX1(x1);
+            setX1(x2);
+            setCom(`Conjunto solucion en x1 y x2`);
+          } else if (d === 0) {
+            const x1 = -b / (2 * a);
+            setX1(x1);
+            setCom(`Conjunto solucion en x1 y x2`);
+          } else {
+            setX1("?");
+            setX1("?");
+            setCom(`No hay solucion`);
+          }
     }
     
     return {
         dataForm,
-        resultado,
+        x1,x2,
         changeHandler,
         submitHandler
     }

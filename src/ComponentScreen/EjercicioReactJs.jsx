@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HookToEjercicioReactJs } from "../Hooks/HookToEjercicioReactJs";
 
 export const EjercicioReactJs = () => {
-  const { dataForm, resultado, changeHandler, submitHandler } = HookToEjercicioReactJs();
-  const [dataUrl, setDataUrl] = useState([]);
+  const {x1, x2, changeHandler, submitHandler } = HookToEjercicioReactJs();
 
   return (
     <>
@@ -30,21 +29,31 @@ export const EjercicioReactJs = () => {
               <div className="row g-3 align-items-center">
                 <div className="mb-3 col-auto">
                   <label htmlFor="labelInputA" className="form-label">Value of a</label>
-                  <input type="number" className="form-control text-align-right" id="inputa" placeholder="Ingrese un valor" defaultValue={1} min={1}/>
+                  <input onChange={changeHandler} type="number" className="form-control text-align-right" name="inputa" placeholder="Ingrese un valor" defaultValue={1} tabIndex={1}/>
                   <span id="error-valueOfA" className="error" hidden>Debe de ingresar un numero válido</span>
                 </div>
                 <div className="mb-3 col-auto">
                   <label htmlFor="labelInputB" className="form-label">Value of b</label>
-                  <input type="number" className="form-control text-align-right" id="inputb" placeholder="Ingrese un valor" defaultValue={1} min={1}/>
+                  <input onChange={changeHandler} type="number" className="form-control text-align-right" name="inputb" placeholder="Ingrese un valor" defaultValue={1} tabIndex={2}/>
                   <span id="error-valueOfB" className="error" hidden>Debe de ingresar un numero válido</span>
                 </div>
                 <div className="mb-3 col-auto">
                   <label htmlFor="labelInputC" className="form-label">Value of c</label>
-                  <input type="number" className="form-control text-align-right" id="inputc" placeholder="Ingrese un valor" defaultValue={1} min={1}/>
+                  <input onChange={changeHandler} type="number" className="form-control text-align-right" name="inputc" placeholder="Ingrese un valor" defaultValue={1} tabIndex={3}/>
                   <span id="error-valueOfC" className="error" hidden>Debe de ingresar un numero válido</span>
                 </div>
                 <div className="gap-2 mb-3">
-                  <button type="submit" className="btn btn-primary">Guardar </button>
+                  <button type="submit" className="btn btn-primary btn-sm" tabIndex={4}>Calcular</button>
+                </div>
+              </div>
+              <div className="row g-3 align-items-center">
+                <div className="mb-3 col-auto">
+                  <label htmlFor="labelInputx1" className="form-label">Value of x1</label>
+                  <input disabled type="number" className="form-control text-align-right" id="inputx1" defaultValue={{x1}} tabIndex={5}/>
+                </div>
+                <div className="mb-3 col-auto">
+                  <label htmlFor="labelInputx2" className="form-label">Value of x2</label>
+                  <input disabled type="number" className="form-control text-align-right" id="inputx2" defaultValue={{x2}} tabIndex={6}/>
                 </div>
               </div>
             </form>
