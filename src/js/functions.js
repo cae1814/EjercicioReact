@@ -7,7 +7,7 @@ export function alerta(msg, icon, id = '') {
     MySwal.fire({title: msg,
         icon: icon,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2500,
         timerProgressBar: true,
         onOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -16,6 +16,7 @@ export function alerta(msg, icon, id = '') {
     });
 
     function onfocus(id) {
+        
         if (id !== '') {
             document.getElementById(id).focus();
         }
